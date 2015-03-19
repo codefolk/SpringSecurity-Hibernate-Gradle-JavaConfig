@@ -14,7 +14,7 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd ">
     
     <context:annotation-config />
-    <context:component-scan base-package="com.mkyong.web.controller" />
+    <context:component-scan base-package="com.codefolk.web.controller" />
     
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="cache" value="true"/>
