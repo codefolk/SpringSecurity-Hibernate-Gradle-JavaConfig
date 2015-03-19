@@ -1,0 +1,63 @@
+buildscript {
+    repositories {
+        maven { url "http://repo.spring.io/libs-release" }
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.8.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'maven'
+apply plugin: 'spring-boot'
+
+group = 'com.mkyong'
+version = '1.0-SNAPSHOT'
+
+description = """SpringSecurity LoginForm Database"""
+
+configurations {
+    providedRuntime
+}
+
+repositories {
+     mavenLocal()
+     mavenCentral()
+     maven { url "http://repo.spring.io/libs-release" }
+}
+
+dependencies {
+    
+    compile group: 'jstl', name: 'jstl', version:'1.2'
+    compile group: 'commons-dbcp', name: 'commons-dbcp', version:'1.4'
+    compile group: 'org.hibernate', name: 'hibernate-core', version:'4.2.11.Final'
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.8.RELEASE'
+    compile group: 'org.springframework', name: 'spring-web', version:'3.2.8.RELEASE'
+    compile group: 'org.springframework', name: 'spring-webmvc', version:'3.2.8.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jdbc', version:'3.2.8.RELEASE'
+    compile group: 'org.springframework', name: 'spring-aspects', version:'3.2.8.RELEASE'
+    compile group: 'org.springframework', name: 'spring-orm', version:'3.2.8.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-web', version:'3.2.3.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-config', version:'3.2.3.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-taglibs', version:'3.2.3.RELEASE'
+    
+    compile group: 'mysql', name: 'mysql-connector-java', version:'5.1.30'
+    
+    compile group: 'org.springframework.boot', name:'spring-boot-starter-web', version: '1.2.1.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-ws', version : '1.2.1.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version : '1.2.1.RELEASE'
+    compile 'javax.servlet.jsp.jstl:jstl:1.2',
+            'taglibs:standard:1.1.2'
+    providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper:8.0.8'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.1'
+}
+
+if(!hasProperty("mainClass")) {
+    ext.mainClass = "com.mkyong.config.Application"
+}
